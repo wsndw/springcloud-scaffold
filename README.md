@@ -2,7 +2,8 @@
 包含mqtt模块的使用，单例工厂重连，客户端在线状态实时监听。
 
 # springcloud脚手架
-1、服务注册发现：nacos
+1、服务注册发现：nacos  
+
 2、网关：gateway
 3、api调用：swagger2
 4、链路追踪：skywalking（邮件告警暂无）
