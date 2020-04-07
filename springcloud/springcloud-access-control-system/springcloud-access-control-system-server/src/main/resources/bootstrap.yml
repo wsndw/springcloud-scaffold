@@ -1,0 +1,43 @@
+server:
+  port: ${port:56040}
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  application:
+    name: pmp-access-control-system
+  main:
+    allow-bean-definition-overriding: true # Spring Boot 2.1 需设置
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 # 配置中心地址
+        file-extension: yaml #Data ID的名称就是Application的name加file-extension
+        namespace: a201e5c5-9546-4141-b8f3-f6a11682c039 # dev开发环境
+        group: DEV_GROUP # xx业务组
+      discovery:
+        server-addr: 127.0.0.1:8848 # 注册中心地址
+        namespace: a201e5c5-9546-4141-b8f3-f6a11682c039
+        cluster-name: DEFAULT
+
+dubbo:
+  scan:
+    # dubbo服务扫描的包
+    base-packages: cn.cq.springcloud.access.control.system.server.service
+  protocol:
+    # dubbo协议
+    name: dubbo
+    # dubbo协议端口
+    port: ${dubbo_port:20882}
+  registry:
+    address: nacos://127.0.0.1:8848
+  application:
+    # dubbo运维服务是否开启
+    qos-enable: false
+  consumer:
+    # 启动时是否检查依赖的服务
+    check: false
+
+swagger:
+  base-package: cn.cq.springcloud.access.control.system.server.controller
