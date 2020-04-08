@@ -14,7 +14,7 @@
         <module>springcloud-common</module>
         <module>springcloud-application</module>
         <module>springcloud-access-control-system</module>
-        <module>springcloud-application</module>
+        <module>springcloud-mail</module>
     </modules>
 
 
@@ -53,6 +53,20 @@
                 <groupId>com.spring4all</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>1.9.1.RELEASE</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.12</version>
+                <type>pom</type>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>22.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -45,6 +45,7 @@ public class GatewayBootstrap {
             resources.add(swaggerResource("springcloud-basic-system", "/springcloud-basic-system/v2/api-docs", "2.0"));
             resources.add(swaggerResource("springcloud-application", "/springcloud-application/v2/api-docs", "2.0"));
             resources.add(swaggerResource("springcloud-access-control-system", "/springcloud-access-control-system/v2/api-docs", "2.0"));
+            resources.add(swaggerResource("springcloud-mail", "/springcloud-mail/v2/api-docs", "2.0"));
             return resources;
         }
         //定义swaggerResource的构造函数

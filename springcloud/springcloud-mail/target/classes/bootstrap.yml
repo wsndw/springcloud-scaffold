@@ -1,0 +1,40 @@
+server:
+  port: 56050
+#  servlet:
+#    context-path: /application
+
+spring:
+  application:
+    name: springcloud-mail
+  main:
+    allow-bean-definition-overriding: true # Spring Boot 2.1 需设置
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 # 配置中心地址
+        file-extension: yaml #Data ID的名称就是Application的name加file-extension
+        namespace: a201e5c5-9546-4141-b8f3-f6a11682c039 # dev开发环境
+        group: DEV_GROUP # xx业务组
+      discovery:
+        server-addr: 127.0.0.1:8848 # 注册中心地址
+        namespace: a201e5c5-9546-4141-b8f3-f6a11682c039
+        cluster-name: DEFAULT
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 2757945656@qq.com
+    password: ogvzsezazusuddja
+    default-encoding: utf-8
+    protocol: smtp
+    properties:
+      mail:
+        debug: false
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+
+receive:
+  mail:
+    name: 460858975@qq.com
+swagger:
+  base-package: cn.cq.controller

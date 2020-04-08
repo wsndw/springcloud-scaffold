@@ -4,7 +4,7 @@
  * <author>    <create>    <version>   <desc>
  * 作者姓名     修改时间        版本号    功能描述
  */
-package cn.cq.application.controller;
+package cn.cq.application;
 
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;

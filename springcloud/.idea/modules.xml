@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/springcloud-common/springcloud-common.iml" filepath="$PROJECT_DIR$/springcloud-common/springcloud-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/springcloud-common/springcloud-common-utils/springcloud-common-utils.iml" filepath="$PROJECT_DIR$/springcloud-common/springcloud-common-utils/springcloud-common-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/springcloud-gateway/springcloud-gateway.iml" filepath="$PROJECT_DIR$/springcloud-gateway/springcloud-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-mail/springcloud-mail.iml" filepath="$PROJECT_DIR$/springcloud-mail/springcloud-mail.iml" />
     </modules>
   </component>
 </project>

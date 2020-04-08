@@ -2,14 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springcloud-common-utils" />
         <module name="springcloud-gateway" />
-        <module name="springcloud-basic-system-api" />
+        <module name="springcloud-mail" />
         <module name="springcloud-access-control-system-server" />
+        <module name="springcloud-basic-system-api" />
         <module name="springcloud-basic-system-server" />
         <module name="springcloud-application" />
         <module name="springcloud-access-control-system-api" />
@@ -27,6 +29,7 @@
       <module name="springcloud-common" target="1.8" />
       <module name="springcloud-common-utils" target="1.8" />
       <module name="springcloud-gateway" target="1.8" />
+      <module name="springcloud-mail" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: pmp-application
+    name: springcloud-application
   main:
     allow-bean-definition-overriding: true # Spring Boot 2.1 需设置
   cloud:
