@@ -37,3 +37,5 @@ p
 @springcloud-basic-system/springcloud-basic-system-server/pom.xml,9\d\9d677ead1c5a34eaed0469e4340b2b65baf8173d
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+U
+%springcloud-mail/springcloud-mail.iml,5\5\55505150ee6c188cc599440d3a5d1ea0c25a2e8f
