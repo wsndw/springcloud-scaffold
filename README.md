@@ -21,3 +21,10 @@ clone后修改nacos注册中心配置
 2、springcloud-access-control-system-server  
 3、springcloud-application  
 4、springcloud-gateway  
+
+开发计划：  
+1、skywalking链路追踪（已完成）  
+2、整合邮件警告（已完成）  
+3、zabbix监控（未开始）  
+4、oauth2（已开始）  
+5、待定
