@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # MQTT相关
 包含mqtt模块的使用，单例工厂重连，客户端在线状态实时监听。
+=======
+>>>>>>> f391de2af73b56107fa130b795231177031a026c
 ****
 # springcloud脚手架
 1、服务注册发现：nacos  
@@ -23,3 +26,13 @@ clone后修改nacos注册中心配置
 2、springcloud-access-control-system-server  
 3、springcloud-application  
 4、springcloud-gateway  
+<<<<<<< HEAD
+=======
+
+开发计划：  
+1、skywalking链路追踪（已完成）  
+2、整合邮件警告（已完成）  
+3、zabbix监控（未开始）  
+4、oauth2（已开始）  
+5、待定
+>>>>>>> f391de2af73b56107fa130b795231177031a026c
