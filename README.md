@@ -34,5 +34,6 @@ clone后修改nacos注册中心配置
 1. skywalking链路追踪（已完成）
 2. 整合邮件警告（已完成）
 3. zabbix监控（未开始）
-4. oauth2（已开始）  
-5. 待定
+4. oauth2（已完成，未整合权限）  
+5. kafka+elk（未开始）
+6. 待定
