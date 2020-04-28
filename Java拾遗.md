@@ -131,4 +131,147 @@ hashed = B.crypt_raw(passwordb, saltb, rounds);
 
 
 
-### 5.
+### 5.Spring Boot 2.2.x Junit找不到包
+
+使用 maven 创建了一个 parent 项目 A，其 pom.xml 继承 parent 为 spring-boot-starter-parent 2.1.10。
+
+然后创建 module 项目 B，使用 spring initializr 构建项目，用的是 IDEA，当时没有选 Spring Boot 版本，结果默认使用的是 2.2.1。 创建成功之后的pom.xml如下 Spring Boot 2.2 之后的 pom.xml。
+
+修改项目 B 的 pom 的 parent 为 A，结果测试类报错，找不到 org.junit.jupiter.api.Test
+
+
+
+spring boot 2.2 之前使用的是 Junit4 而后续的使用的是Junit5，导致缺少包。
+
+**解决方案：**
+将父工程 A 的 parent 升级为 spring-boot-starter-parent 2.2.1，如果使用了依赖管理 dependencyManagement，需要把里面的 spring-boot-starter-test 版本号改为 与 parent 对应的 2.2.1。
+
+当然，也可以直接指定 module工程B 的 spring-boot-starter-test 版本号改为 与 parent 对应的 2.2.1
+
+2.2之前
+
+```java
+package com.example.demo1;
+ 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+ 
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class Demo1ApplicationTests {
+ 
+    @Test
+    public void contextLoads() {
+    }
+ 
+}
+```
+
+2.2之后
+
+```java
+package com.example.demo;
+ 
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+ 
+@SpringBootTest
+class DemoApplicationTests {
+ 
+    @Test
+    void contextLoads() {
+    }
+ 
+}
+```
+
+2.2之前pom
+
+```xml
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.10.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+</parent>   
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+2.2之后pom
+
+```xml
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.1.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+</parent>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <exclusions>
+        <exclusion>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+官方文档 ：25.Testing
+
+Spring Boot provides a number of utilities and annotations to help when testing your application. Test support is provided by two modules: `spring-boot-test` contains core items, and `spring-boot-test-autoconfigure` supports auto-configuration for tests.
+
+Most developers use the `spring-boot-starter-test` “Starter”, which imports both Spring Boot test modules as well as JUnit Jupiter, AssertJ, Hamcrest, and a number of other useful libraries.
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <exclusions>
+        <exclusion>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+25.测试
+
+Spring Boot提供了许多实用程序和注释，可以在测试应用程序时提供帮助。测试支持由两个模块提供：spring-boot-test包含核心项，并spring-boot-test-autoconfigure支持测试的自动配置。大多数开发人员都使用spring-boot-starter-test“入门程序”，该程序同时导入Spring Boot测试模块以及JUnit Jupiter，AssertJ，Hamcrest和许多其他有用的库。
+
+启动程序还带来了老式引擎，因此您可以运行JUnit 4和JUnit 5测试。如果已将测试迁移到JUnit 5，则应排除对JUnit 4的支持，如以下示例所示：
+
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-test</artifactId>
+	<scope>test</scope>
+	<exclusions>
+		<exclusion>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+```
+
+25.3。测试Spring Boot应用程序
+
+Spring Boot应用程序是Spring ApplicationContext，因此除了对普通Spring上下文进行正常测试以外，无需执行任何其他特殊操作即可对其进行测试。
+
+默认情况下，Spring Boot的外部属性，日志记录和其他功能仅在SpringApplication用于创建时才安装在上下文中。
+Spring Boot提供了一个@SpringBootTest注释，spring-test @ContextConfiguration当您需要Spring Boot功能时，它可以用作标准注释的替代。注释通过创建ApplicationContext在测试中使用过的来SpringApplication起作用。除了@SpringBootTest提供许多其他注释外，还用于测试应用程序的更多特定部分。
+
+如果使用的是JUnit 4，请不要忘记也将其添加@RunWith(SpringRunner.class)到测试中，否则注释将被忽略。如果您使用的是JUnit 5，则无需添加等价项@ExtendWith(SpringExtension.class)，@SpringBootTest并且其他@…Test注释已经在其中进行了注释。
